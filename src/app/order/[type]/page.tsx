@@ -1,15 +1,14 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+// app/order/[type]/page.tsx
+
 import { drawingTypes } from "@/data/drawingTypes";
 import OrderPage from "@/components/OrderPage";
 
-export default function OrderTypePage({
+export default async function OrderTypePage({
   params,
-  searchParams,
 }: {
-  params: { type: string };
-  searchParams: Record<string, string | string[] | undefined>;
+  params: Promise<{ type: string }>;
 }) {
-  const { type } = params;
+  const { type } = await params;
   const drawing = drawingTypes.find((dt) => dt.slug === type);
 
   if (!drawing) {
