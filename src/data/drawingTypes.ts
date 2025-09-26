@@ -13,6 +13,7 @@ export interface DrawingTypeConfig {
   images: string[]; // URL de imagens para a galeria
 }
 
+// Dados padrão - serão sobrescritos pelos dados do JSON em produção
 export const drawingTypes: DrawingTypeConfig[] = [
   {
     slug: "type-1",
@@ -69,5 +70,4 @@ export const drawingTypes: DrawingTypeConfig[] = [
       "https://picsum.photos/600/600?random=10",
     ],
   },
-  // …adicione mais tipos conforme precisar
 ];
