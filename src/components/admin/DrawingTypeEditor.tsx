@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { DrawingTypeConfig } from "@/data/drawingTypes";
 
 interface DrawingTypeEditorProps {
@@ -12,7 +13,7 @@ export default function DrawingTypeEditor({ drawingType, onSave }: DrawingTypeEd
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState<DrawingTypeConfig>(drawingType);
 
-  const handleInputChange = (field: keyof DrawingTypeConfig, value: any) => {
+  const handleInputChange = (field: keyof DrawingTypeConfig, value: string | number) => {
     setFormData(prev => ({
       ...prev,
       [field]: value
@@ -232,11 +233,12 @@ export default function DrawingTypeEditor({ drawingType, onSave }: DrawingTypeEd
                 </button>
               )}
               {image && (
-                <div className="mt-2">
-                  <img
+                <div className="mt-2 relative w-full h-24">
+                  <Image
                     src={image}
                     alt={`Preview ${index + 1}`}
-                    className="w-full h-24 object-cover rounded-md"
+                    fill
+                    className="object-cover rounded-md"
                     onError={(e) => {
                       (e.target as HTMLImageElement).style.display = 'none';
                     }}

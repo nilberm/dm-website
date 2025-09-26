@@ -6,7 +6,7 @@ import path from "path";
 const DATA_FILE = path.join(process.cwd(), "src/data/drawingTypes.json");
 
 // Função para ler dados do arquivo JSON
-async function readDrawingTypes() {
+async function readDrawingTypes(): Promise<typeof drawingTypes> {
   try {
     if (fs.existsSync(DATA_FILE)) {
       const fileContent = fs.readFileSync(DATA_FILE, "utf8");
@@ -21,7 +21,7 @@ async function readDrawingTypes() {
 }
 
 // Função para escrever dados no arquivo JSON
-async function writeDrawingTypes(data: any) {
+async function writeDrawingTypes(data: typeof drawingTypes): Promise<boolean> {
   try {
     fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
     return true;

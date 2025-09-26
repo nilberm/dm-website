@@ -27,7 +27,7 @@ export default function AdminLogin() {
       } else {
         setError("Senha incorreta");
       }
-    } catch (error) {
+    } catch {
       setError("Erro ao verificar senha");
     }
   };
