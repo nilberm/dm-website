@@ -49,7 +49,7 @@ export async function PUT(request: NextRequest) {
     const currentData = await readDrawingTypes();
     
     // Encontrar e atualizar o tipo específico
-    const updatedData = currentData.map((type: any) => 
+    const updatedData = currentData.map((type) => 
       type.slug === updatedType.slug ? updatedType : type
     );
     
